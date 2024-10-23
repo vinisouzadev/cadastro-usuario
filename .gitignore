@@ -1,0 +1,10 @@
+.vs/
+eSistem.Dev.Estagio.Web/bin/
+eSistem.Dev.Estagio.Web/obj/
+eSistem.Dev.Estagio.Core/bin/
+eSistem.Dev.Estagio.Core/obj/
+eSistem.Dev.Estagio.Api/bin/
+eSistem.Dev.Estagio.Api/obj/
+eSistem.Dev.Estagio.Api/Migrations/
+eSistem.Dev.Estagio.Api/appsettings.Development.json
+eSistem.Dev.Estagio.Api/eSistem.Dev.Estagio.Api.csproj.user

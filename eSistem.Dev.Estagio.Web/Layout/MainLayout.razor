@@ -1,0 +1,51 @@
+﻿@using System.Security.Claims
+@using MudBlazor.Utilities
+@using eSistem.Dev.Estagio.Core.Handlers
+@using eSistem.Dev.Estagio.Core.Models.Account
+@using eSistem.Dev.Estagio.Web.Security
+@inherits LayoutComponentBase
+@inject ICookieAuthenticationStateProvider AuthenticationState
+
+<MudThemeProvider @ref="Configuration.ThemeProvider" Theme="Configuration.Theme"></MudThemeProvider>
+
+<AuthorizeView>
+    <Authorized>
+        <MudLayout>
+            <MudDrawer @bind-Open="@DrawerOpened" Variant="DrawerVariant.Mini" OpenMiniOnHover="true" OverlayAutoClose="true">
+                <MudNavMenu Class="pb-10 pt-15">
+                    <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home" Match="NavLinkMatch.All">Tela inicial</MudNavLink>
+                    <MudNavLink Href="/editar/alterar-senha" Icon="@Icons.Material.Filled.Password" Match="NavLinkMatch.All">Alterar senha</MudNavLink>
+                    <MudNavLink Href="/logout" Icon="@Icons.Material.Filled.Logout" Match="NavLinkMatch.All">Sair</MudNavLink>
+                </MudNavMenu>
+            </MudDrawer>
+
+            <MudAppBar Class="d-flex" Elevation="3" Dense="true">
+                <MudIconButton Icon="@Icons.Material.Filled.Menu" OnClick="ToggleDrawer" />
+                <MudSpacer />
+                <MudText Typo="Typo.h6">@(AuthenticationState.GetAuthenticadedUser()?.Pessoa.NomeRazaoSocial)</MudText>
+                <MudSpacer />
+            </MudAppBar>
+
+            <MudMainContent>
+                <MudContainer Class="mt-10">
+                    @Body
+                </MudContainer>
+            </MudMainContent>
+        </MudLayout>
+    </Authorized>
+
+    <NotAuthorized>
+
+        <LoginRedirect />
+
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private bool DrawerOpened = false;
+
+    public void ToggleDrawer()
+    {
+        DrawerOpened = !DrawerOpened;
+    }
+}

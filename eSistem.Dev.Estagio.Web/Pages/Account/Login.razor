@@ -1,0 +1,63 @@
+﻿@page "/login"
+@layout HeadlessLayout
+@inherits LoginPageCode
+
+<MudSnackbarProvider/>
+<PageTitle>eSistemLoja - Entrar</PageTitle>
+
+<MudGrid Justify="Justify.Center">
+    <MudItem md="6" sm="10" xs="12">
+        <MudPaper Elevation="16" Class="mud-width-full pa-8">
+            <div class="d-flex justify-center mt-4">
+                <img src="Imgs/logotipo.png" width="150" />
+            </div>
+            <EditForm Model="InputModel" class="mt-15" OnValidSubmit="OnValidSubmitAsync">
+                <MudTextField T="string"
+                              Label="Nome de usuário"
+                              InputType="InputType.Text"
+                              For="@(() => InputModel.UserName)"
+                              @bind-Value="InputModel.UserName"
+                              Error="@LoginValidator.IsUserNameInvalid"
+                              ErrorText="@LoginValidator.UserNameError.FirstOrDefault()" />
+                         
+
+                <MudTextField T="string"
+                              Label="Senha"
+                              InputType="@(ToggleVisibility is false ? InputType.Password : InputType.Text)"
+                              For="@(() => InputModel.Password)"
+                              @bind-Value="InputModel.Password"
+                              Class="mt-5 mb-10"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@(ToggleVisibility is false ? Icons.Material.TwoTone.VisibilityOff : Icons.Material.TwoTone.Visibility)"
+                              OnAdornmentClick="OnVisibilityIconClickedAsync"
+                              Error="@LoginValidator.IsPasswordInvalid"
+                              ErrorText="@LoginValidator.PasswordError.FirstOrDefault()"/>
+
+                <div class="d-flex">
+                    @if (IsBusy)
+                    {
+                        <MudProgressCircular Color="Color.Primary" Indeterminate="true"/>
+                        <MudSpacer/>
+                        <MudButton Disabled="true" Color="Color.Primary" Variant="Variant.Text">Registrar</MudButton>
+                    }
+                    else
+                    {
+                        <MudButton Variant="Variant.Filled"
+                                   ButtonType="ButtonType.Submit"
+                                   Color="Color.Primary">Entrar</MudButton>
+
+                        <MudSpacer />
+
+                        <MudButton Variant="Variant.Text"
+                                   ButtonType="ButtonType.Button"
+                                   Color="Color.Primary"
+                                   href="/registrar">Registrar</MudButton>
+                    }
+                </div>
+                
+                
+            </EditForm>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+

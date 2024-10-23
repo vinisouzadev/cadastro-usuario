@@ -1,0 +1,12 @@
+﻿@inherits LayoutComponentBase
+@using eSistem.Dev.Estagio.Web.Common
+@using Microsoft.AspNetCore.Components
+
+<MudThemeProvider @ref="Configuration.ThemeProvider" Theme="Configuration.Theme"/>
+<MudLayout>
+    <MudMainContent>
+        <MudContainer>
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>

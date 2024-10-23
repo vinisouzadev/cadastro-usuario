@@ -1,0 +1,103 @@
+﻿@page "/registrar"
+@layout HeadlessLayout
+@inherits RegisterPageCode
+
+<PageTitle>eSistemLoja - Registrar</PageTitle>
+<MudPopoverProvider/>
+<MudSnackbarProvider/>
+
+
+<MudGrid Justify="Justify.Center">
+    <MudItem md="6" sm="10" xs="12">
+        <MudPaper Elevation="16" Class="mud-width-full pa-8 mb-10">
+            <div class="d-flex justify-center mt-4">
+                <img src="Imgs/logotipo.png" width="150" />
+            </div>
+            <EditForm Model="InputModel" class="mt-15" OnValidSubmit="OnValidSubmitAsync">
+
+                <MudSelect T="ETipo"
+                    Label="Você é uma pessoa Física ou Jurídica?"
+                    @bind-Value="@InputModel.Tipo"
+                    AnchorOrigin="Origin.BottomCenter"
+                Class="mb-3">
+                    <MudSelectItem T="ETipo" Value="ETipo.Fisico">Pessoa física</MudSelectItem>
+                    <MudSelectItem T="ETipo" Value="ETipo.Juridico">Pessoa jurídica</MudSelectItem>
+                </MudSelect>
+                <MudTextField T="string"
+                              Label=@(InputModel.Tipo is ETipo.Fisico ? "Digite seu nome" : "Digite sua razão social")
+                              InputType="InputType.Text"
+                              For="@(() => InputModel.NomeRazaoSocial)"
+                              @bind-Value="InputModel.NomeRazaoSocial"
+                              Class="mb-2"
+                              Error="@UserValidator.IsNomeRazaoSocialInvalid"
+                              ErrorText="@UserValidator.NomeRazaoSocialError.FirstOrDefault()"/>
+
+                <MudTextField T="string"
+                              Label=@(InputModel.Tipo is ETipo.Fisico ? "CPF" : "CNPJ")
+                              InputType="InputType.Text"
+                              For="@(() => InputModel.CpfCnpj)"
+                              @bind-Value="InputModel.CpfCnpj"
+                              Class="mb-2"
+                              Error="@UserValidator.IsCpfCnpjInvalid"
+                              ErrorText="@UserValidator.CpfCnpjError.FirstOrDefault()" />
+
+                <MudTextField T="string"
+                              Label="Nome de usuário"
+                              InputType="InputType.Text"
+                              For="@(() => InputModel.UserName)"
+                              @bind-Value="InputModel.UserName"
+                              Class="mb-2"
+                              Error="@UserValidator.IsUserNameInvalid"
+                              ErrorText="@UserValidator.UserNameError.FirstOrDefault()" />
+
+                <MudTextField T="string"
+                              Label="Senha"
+                              InputType="@(ToggleVisibility is false ? InputType.Password : InputType.Text)"
+                              For="@(() => InputModel.Password)"
+                              @bind-Value="InputModel.Password"
+                              Class="mb-2"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@(ToggleVisibility is false ? Icons.Material.TwoTone.VisibilityOff : Icons.Material.TwoTone.Visibility)"
+                              OnAdornmentClick="OnVisibilityIconClicked"
+                              Error="@UserValidator.IsPasswordInvalid"
+                              ErrorText="@UserValidator.PasswordError.FirstOrDefault()" />
+
+                <MudTextField T="string"
+                              Label="Confirme sua senha"
+                              Class="mb-10"
+                              InputType="@(ToggleVisibility is false ? InputType.Password : InputType.Text)"
+                              For="@(() => InputModel.ConfirmPassword)"
+                              @bind-Value="InputModel.ConfirmPassword"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@(ToggleVisibility is false ? Icons.Material.TwoTone.VisibilityOff : Icons.Material.TwoTone.Visibility)"
+                              OnAdornmentClick="OnVisibilityIconClicked"
+                              Error="@UserValidator.IsConfirmPasswordInvalid"
+                              ErrorText="@UserValidator.ConfirmPasswordError.FirstOrDefault()" />
+                
+                <div class="d-flex">
+                    @if (IsBusy)
+                    {
+                        <MudButton Disabled="true" Color="Color.Primary" Variant="Variant.Text">Voltar</MudButton>
+                        <MudSpacer></MudSpacer>
+                        <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                    }
+                    else
+                    {
+                        <MudButton Variant="Variant.Text"
+                                   Color="Color.Primary"
+                                   Href="/login">Voltar</MudButton>
+
+                        <MudSpacer />
+
+                        <MudButton Variant="Variant.Filled"
+                                   ButtonType="ButtonType.Submit"
+                                   Color="Color.Primary">Registrar</MudButton>
+                    }
+                </div>
+                
+                
+            </EditForm>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+

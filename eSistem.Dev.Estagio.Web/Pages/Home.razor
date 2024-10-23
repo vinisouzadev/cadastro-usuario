@@ -1,0 +1,60 @@
+﻿@page "/"
+@inherits EditPageCode
+
+<PageTitle>Home</PageTitle>
+<MudSnackbarProvider/>
+<MudPopoverProvider/>
+<MudDialogProvider/>
+
+<MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary" style="font-weight:500">USUÁRIOS CADASTRADOS</MudText>
+
+
+
+
+<MudGrid Class="d-flex justify-center pb-6 mb-6 mt-10">
+    <MudItem xs="12" sm="12" md="10" lg="10" xl="7" xxl="7">
+        <AuthorizeView Roles="Admin">
+            <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" Class="mb-1" Href="/registrar-admin">Adicionar</MudButton>
+        </AuthorizeView>
+        <MudDataGrid Items="Usuarios"
+                     ColumnResizeMode="ResizeMode.Column"
+                     Elevation="6">
+            <Columns>
+                <PropertyColumn Property="x => x!.UserName" Title="Nome de usuário" />
+
+                <PropertyColumn Property="x => x!.Pessoa.NomeRazaoSocial" Title="Nome / Razão Social" />
+
+                <PropertyColumn Property="x => x!.Pessoa.Tipo" Title="Tipo de pessoa" />
+
+                <AuthorizeView Roles="Admin">
+                    <Authorized>
+                        <TemplateColumn CellClass="d-flex justify-end">
+                        <CellTemplate Context="cellContext">
+                            <MudStack Row>
+                                    @if(cellContext.Item.Claims.Values.FirstOrDefault() != "Admin")
+                                    {
+                                        <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                                       Color="Color.Error"
+                                                       OnClick="@(() => OnDeleteBottomClickedAsync(cellContext.Item.UserName))" />
+                                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Href=@($"/editar-usuario/{cellContext.Item.UserName}") Color="Color.Warning" />
+                                    }
+                                    else
+                                    {   
+                                        <MudText Typo="Typo.h6" Color="Color.Primary" Align="Align.Center">Admin</MudText>
+                                        if (cellContext.Item.UserName == context.User.Identity.Name)
+                                        {
+                                            <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Warning" Href=@($"/editar-usuario/{cellContext.Item.UserName}") />
+                                        }
+                                    }
+                                    
+                            </MudStack>
+                        </CellTemplate>
+                    </TemplateColumn>
+                    </Authorized>
+                    
+                </AuthorizeView>
+            </Columns>
+            
+        </MudDataGrid>
+    </MudItem>
+</MudGrid>

@@ -1,0 +1,19 @@
+﻿@inject NavigationManager Navigation
+
+<MudMainContent>
+    <MudContainer>
+        <MudGrid Justify="Justify.Center">
+            <MudItem sm="12" xs="12" md="6">
+                <MudText Typo="Typo.h3" Color="Color.Primary" Class="alinhamento">Estamos te redirecionando</MudText>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudMainContent>
+
+
+@code {
+    protected override void OnInitialized()
+    {
+        Navigation.NavigateTo("/login");
+    }
+}

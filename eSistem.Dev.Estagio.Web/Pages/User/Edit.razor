@@ -1,0 +1,68 @@
+﻿@page "/editar-usuario/{id}"
+
+@inherits EditPageCode
+<MudSnackbarProvider/>
+
+<PageTitle>Alterar usuario</PageTitle>
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <MudGrid Justify="Justify.Center">
+            <MudItem md="8" sm="10" xs="12">
+                <MudPaper Elevation="16" Class="mud-width-full pa-8 mb-10">
+                    <EditForm Model="InputModel" class="mt-5" OnValidSubmit="OnValidSubmitAsync" Context="formContext">
+
+                        <div class="d-flex justify-center mud-width-full mb-10">
+                            <MudText Typo="Typo.h4" Color="Color.Primary">EDITAR USUÁRIO</MudText>
+                        </div>
+
+                        <MudTextField T="string"
+                                      Label="Digite o novo nome de usuário"
+                                      InputType="InputType.Text"
+                                      For="@(() => InputModel.UserName)"
+                                      @bind-Value="InputModel.UserName"
+                                      Class="mb-2"
+                                      Error="@EditValidator.IsUserNameInvalid"
+                                      ErrorText="@EditValidator.NomeRazaoSocialError.FirstOrDefault()"/>
+
+                        <MudTextField T="string"
+                                      Label="Digite o novo nome ou razão social"
+                                      InputType="InputType.Text"
+                                      For="@(() => InputModel.NomeRazaoSocial)"
+                                      @bind-Value="InputModel.NomeRazaoSocial"
+                                      Class="mb-2" 
+                                      Error="@EditValidator.IsNomeRazaoSocialInvalid"
+                                      ErrorText="@EditValidator.NomeRazaoSocialError.FirstOrDefault()"/>
+
+                        <div class="d-flex mt-10">
+                            @if (IsBusy)
+                            {
+                                <MudButton Disabled="true" Color="Color.Primary" Variant="Variant.Text">Voltar</MudButton>
+                                <MudSpacer></MudSpacer>
+                                <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                            }
+                            else
+                            {
+                                <MudButton Variant="Variant.Text"
+                                           Color="Color.Primary"
+                                           Href="/">Voltar</MudButton>
+
+                                <MudSpacer />
+
+                                <MudButton Variant="Variant.Filled"
+                                           ButtonType="ButtonType.Submit"
+                                           Color="Color.Primary">Editar</MudButton>
+                            }
+                        </div>
+
+                    </EditForm>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </Authorized>
+    <NotAuthorized>
+
+    </NotAuthorized>
+</AuthorizeView>
+
+
