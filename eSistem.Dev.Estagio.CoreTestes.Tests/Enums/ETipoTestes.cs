@@ -3,17 +3,19 @@
 namespace eSistem.Dev.Estagio.CoreTestes.Tests.Enums
 {
     [Trait("Category", "ETipo")]
-    public sealed class EnumTestes
+    public sealed class ETipoTestes
     {
         [Fact]
         public static void Enum_DadoValorDoEnum_EntaoAssocieCorretamente()
         {
+            int inputFisico = 0;
+            int inputJuridico = 1;
 
-            ETipo tipo = (ETipo)1;
-            ETipo tipo2 = 0;
+            ETipo expectedETipoFisico= ETipo.Fisico;
+            ETipo expectedETipoJuridico = ETipo.Juridico;
 
-            Assert.Equal(ETipo.Juridico, tipo);
-            Assert.Equal(ETipo.Fisico, tipo2);
+            Assert.Equal(expectedETipoFisico, (ETipo)inputFisico);
+            Assert.Equal(expectedETipoJuridico, (ETipo)inputJuridico);
         }
     }
 }
