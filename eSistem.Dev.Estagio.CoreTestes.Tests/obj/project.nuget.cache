@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "HpqAgoiQQAE=",
+  "dgSpecHash": "QnSmpPzB9/w=",
   "success": true,
   "projectFilePath": "C:\\Estagio\\.NET\\eSistem.Dev.Estagio\\eSistem.Dev.Estagio.CoreTestes.Tests\\eSistem.Dev.Estagio.CoreTestes.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dev_estagio\\.nuget\\packages\\aspire.hosting\\8.1.0\\aspire.hosting.8.1.0.nupkg.sha512",
     "C:\\Users\\dev_estagio\\.nuget\\packages\\aspire.hosting.testing\\8.1.0\\aspire.hosting.testing.8.1.0.nupkg.sha512",
+    "C:\\Users\\dev_estagio\\.nuget\\packages\\bogus\\35.6.1\\bogus.35.6.1.nupkg.sha512",
     "C:\\Users\\dev_estagio\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\dev_estagio\\.nuget\\packages\\fractions\\7.3.0\\fractions.7.3.0.nupkg.sha512",
     "C:\\Users\\dev_estagio\\.nuget\\packages\\google.protobuf\\3.24.0\\google.protobuf.3.24.0.nupkg.sha512",

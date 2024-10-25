@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[8.1.0, )"
             },
+            "Bogus": {
+              "target": "Package",
+              "version": "[35.6.1, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.10.0, )"
