@@ -1,0 +1,108 @@
+[33mcommit 07b77a70d285f8d2a174c5a832fefe62cd6544d9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mCriar-teste-unitario-Core[m[33m)[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 17:22:06 2024 -0300
+
+    Adiciona arquivo de teste unitário de DeleteUserRequest
+
+[33mcommit bc2678f667550c831842f257577524eb3e3524f6[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 17:16:03 2024 -0300
+
+    Finaliza teste unitário de ConfirmPasswordRequest
+
+[33mcommit fb3adedc541e28635b2623090593e2c866b831e2[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 17:05:13 2024 -0300
+
+    Adiciona arquivo de teste unitário de ConfirmPasswordRequest
+
+[33mcommit d5b53a14eb51d28f1ed238e19f51afa4f9baa4a4[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 17:02:09 2024 -0300
+
+    Adiciona pasta Usuario no CoreTestes
+
+[33mcommit f6efb7a34bcb5d63ee34bf634ae77aff12d5cd50[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 16:56:25 2024 -0300
+
+    Finaliza teste unitário de RegisterRequest
+
+[33mcommit 609fc173f78fdb838f4bff8ed60cffe52f87dbe1[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 16:52:41 2024 -0300
+
+    Adiciona arquivo de teste unitário de RegisterRequest
+
+[33mcommit 5f92dfa1a5006472b583f4d5b055723b62c330f2[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 16:03:07 2024 -0300
+
+    Finaliza teste unitário de LoginRequest
+
+[33mcommit 19b01b89425189e9d3c7352d03b3c25f23442832[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 14:25:52 2024 -0300
+
+    Finaliza teste unitário de PessoaTestes e adiciona arquivo de teste unitário de LoginRequest
+
+[33mcommit eb3107aa97d628839f31856d075381afba841ff3[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 13:17:08 2024 -0300
+
+    Adiciona trait 'Category' para a classe de teste e método de teste unitário para instância sem parametros para validar set de valores default
+
+[33mcommit 14163e1a4c9507f4248ce61407a2ec83288fe362[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 13:14:04 2024 -0300
+
+    Adiciona arquivo de teste unitário PessoaTestes de Core
+
+[33mcommit a83eb8432f9d0cf8824341c4a0c1a03313bead05[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Mon Oct 28 13:12:49 2024 -0300
+
+    Adiciona teste unitário de Usuario Core para validar instancia com valores default
+
+[33mcommit 7f893e39b2874e9763ad06c6f43c394e7e0114f6[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Fri Oct 25 10:34:10 2024 -0300
+
+    Adiciona UsuarioTestes no projeto CoreTestes
+
+[33mcommit c41bccb1d9c1a5658b7f1b4c692996982d50ed03[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Thu Oct 24 17:51:53 2024 -0300
+
+    Mudança no ETipoTestes - Adiciona variáveis para input inteiro e para os tipos esperados, compara ambos pelo Assert.Equals()
+
+[33mcommit bb76a2309da2b8beca2cbbc9c8c1b5bd238e9e5d[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Thu Oct 24 17:44:07 2024 -0300
+
+    Muda nome da classe EnumsTestes para ETipoTestes
+
+[33mcommit f77f06789e9355f93efb82af278441a560278f19[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Thu Oct 24 17:40:50 2024 -0300
+
+    Adiciona arquivos do CoreTestes no gitignore e cria o arquivo do ETipoTestes
+
+[33mcommit 870e14afa61934474e88f3d3cf26a884d24ed7ed[m[33m ([m[1;31morigin/master[m[33m)[m
+Merge: 27f903a 311ec81
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Wed Oct 23 10:22:54 2024 -0300
+
+    adiciona licença do projeto
+
+[33mcommit 27f903a4b399d28cd3ecd766831a18eaeab220a1[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Wed Oct 23 10:14:30 2024 -0300
+
+    Commit realizado após projeto pronto
+
+[33mcommit 311ec81ec9e0546280005040c84117187016b55a[m
+Author: Vinícius Souza <viniciusouza.dev@gmail.com>
+Date:   Wed Oct 23 09:31:25 2024 -0300
+
+    Initial commit
