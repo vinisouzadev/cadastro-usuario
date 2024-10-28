@@ -36,8 +36,4 @@
 		</AssemblyAttribute>
 	</ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Requests\Usuario\" />
-    </ItemGroup>
-
 </Project>
