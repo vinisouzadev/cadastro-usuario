@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using eSistem.Dev.Estagio.Core.Requests.Account;
+using FluentAssertions;
 
 namespace eSistem.Dev.Estagio.CoreTestes.Tests.Requests.Account
 {
-    internal class LoginRequestTestes
+    [Trait("Category", "LoginRequest")]
+    public class LoginRequestTestes
     {
+        [Fact]
+        public void Construtor_DadoInstanciaSemValores_EntaoDeveSetarValoresDefaultCorretamente()
+        {
+            LoginRequest loginRequest = new();
+
+            loginRequest.UserName.Should().BeEmpty();
+            loginRequest.Password.Should().BeEmpty();
+        }
     }
 }
