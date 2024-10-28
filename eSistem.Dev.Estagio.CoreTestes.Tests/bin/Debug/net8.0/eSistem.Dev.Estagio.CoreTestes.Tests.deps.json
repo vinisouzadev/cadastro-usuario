@@ -9,6 +9,8 @@
       "eSistem.Dev.Estagio.CoreTestes.Tests/1.0.0": {
         "dependencies": {
           "Aspire.Hosting.Testing": "8.1.0",
+          "Bogus": "35.6.1",
+          "FluentAssertions": "6.12.1",
           "Microsoft.NET.Test.Sdk": "17.10.0",
           "coverlet.collector": "6.0.2",
           "eSistem.Dev.Estagio.Core": "1.0.0",
@@ -127,7 +129,26 @@
           }
         }
       },
+      "Bogus/35.6.1": {
+        "runtime": {
+          "lib/net6.0/Bogus.dll": {
+            "assemblyVersion": "35.6.1.0",
+            "fileVersion": "35.6.1.0"
+          }
+        }
+      },
       "coverlet.collector/6.0.2": {},
+      "FluentAssertions/6.12.1": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.4.0"
+        },
+        "runtime": {
+          "lib/net6.0/FluentAssertions.dll": {
+            "assemblyVersion": "6.12.1.0",
+            "fileVersion": "6.12.1.0"
+          }
+        }
+      },
       "Fractions/7.3.0": {
         "runtime": {
           "lib/netstandard2.1/Fractions.dll": {
@@ -965,6 +986,17 @@
           }
         }
       },
+      "System.Configuration.ConfigurationManager/4.4.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        }
+      },
       "System.Diagnostics.DiagnosticSource/8.0.0": {},
       "System.Diagnostics.EventLog/8.0.0": {},
       "System.IdentityModel.Tokens.Jwt/7.1.2": {
@@ -980,6 +1012,22 @@
         }
       },
       "System.Reflection.Metadata/1.6.0": {},
+      "System.Security.Cryptography.ProtectedData/4.4.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        }
+      },
       "System.Text.Encodings.Web/8.0.0": {},
       "System.Text.Json/8.0.0": {
         "dependencies": {
@@ -1078,12 +1126,26 @@
       "path": "aspire.hosting.testing/8.1.0",
       "hashPath": "aspire.hosting.testing.8.1.0.nupkg.sha512"
     },
+    "Bogus/35.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QPJ8zLL0ScEunEoUNhMDigD4ykA/n7vXCZUQdGCFGHBfP2mNYjiCzR9Cj12eaFaDlwkhIC1HKQZihWl8OgbLsw==",
+      "path": "bogus/35.6.1",
+      "hashPath": "bogus.35.6.1.nupkg.sha512"
+    },
     "coverlet.collector/6.0.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
       "path": "coverlet.collector/6.0.2",
       "hashPath": "coverlet.collector.6.0.2.nupkg.sha512"
+    },
+    "FluentAssertions/6.12.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hciWwryyLw3eonfqhFpOMTXyM1/auJChYslEBA+iGJyuBs5O3t/kA8YaeH4iRo/2Fe3ElSYL86C0miivtZ0f3g==",
+      "path": "fluentassertions/6.12.1",
+      "hashPath": "fluentassertions.6.12.1.nupkg.sha512"
     },
     "Fractions/7.3.0": {
       "type": "package",
@@ -1533,6 +1595,13 @@
       "path": "polly.ratelimiting/8.4.1",
       "hashPath": "polly.ratelimiting.8.4.1.nupkg.sha512"
     },
+    "System.Configuration.ConfigurationManager/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gWwQv/Ug1qWJmHCmN17nAbxJYmQBM/E94QxKLksvUiiKB1Ld3Sc/eK1lgmbSjDFxkQhVuayI/cGFZhpBSodLrg==",
+      "path": "system.configuration.configurationmanager/4.4.0",
+      "hashPath": "system.configuration.configurationmanager.4.4.0.nupkg.sha512"
+    },
     "System.Diagnostics.DiagnosticSource/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1560,6 +1629,13 @@
       "sha512": "sha512-COC1aiAJjCoA5GBF+QKL2uLqEBew4JsCkQmoHKbN3TlOZKa2fKLz5CpiRQKDz0RsAOEGsVKqOD5bomsXq/4STQ==",
       "path": "system.reflection.metadata/1.6.0",
       "hashPath": "system.reflection.metadata.1.6.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cJV7ScGW7EhatRsjehfvvYVBvtiSMKgN8bOVI0bQhnF5bU7vnHVIsH49Kva7i7GWaWYvmEzkYVk1TC+gZYBEog==",
+      "path": "system.security.cryptography.protecteddata/4.4.0",
+      "hashPath": "system.security.cryptography.protecteddata.4.4.0.nupkg.sha512"
     },
     "System.Text.Encodings.Web/8.0.0": {
       "type": "package",
