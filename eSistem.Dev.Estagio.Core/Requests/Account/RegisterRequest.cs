@@ -8,8 +8,8 @@ namespace eSistem.Dev.Estagio.Core.Requests.Account
         [Required(ErrorMessage="Este campo é obrigatório")]
         public string NomeRazaoSocial { get; set; } = string.Empty;
 
-        [Required(ErrorMessage="Este campo é obrigatório")]
-        public ETipo Tipo { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigatório")]
+        public ETipo Tipo { get; set; } = ETipo.Fisico;
 
         [Required(ErrorMessage = "Este documento é um campo obrigatório")]
        
