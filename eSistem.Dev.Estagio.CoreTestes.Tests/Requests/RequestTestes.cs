@@ -1,7 +1,7 @@
 ﻿using eSistem.Dev.Estagio.Core.Requests;
 using FluentAssertions;
 
-namespace eSistem.Dev.Estagio.CoreTestes.Tests.Requests.Usuario
+namespace eSistem.Dev.Estagio.CoreTestes.Tests.Requests
 {
     [Trait("Category", "Request")]
     public class RequestTestes
