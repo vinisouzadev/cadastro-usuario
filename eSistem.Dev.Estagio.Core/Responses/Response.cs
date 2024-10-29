@@ -20,7 +20,7 @@ namespace eSistem.Dev.Estagio.Core.Responses
         }
 
         public int StatusCode { get; set; }
-
+         
         public string? Message { get; set; } 
 
         public TData? Data { get; set; }

@@ -4,6 +4,7 @@ using eSistem.Dev.Estagio.Core.Models.Account;
 using eSistem.Dev.Estagio.Core.Responses;
 using FluentAssertions;
 using Microsoft.AspNetCore.ResponseCompression;
+using System.Diagnostics.CodeAnalysis;
 
 namespace eSistem.Dev.Estagio.CoreTestes.Tests.Responses
 {
@@ -51,6 +52,28 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests.Responses
             response.Data.Should().BeNull();
             response.StatusCode.Should().Be(Configuration.DefaultStatusCode);
             response.Message.Should().BeNull();
+        }
+
+        [Fact]
+        public void IsSuccess_DadoValorDeSucessoParaStatusCode_EntaoDeveRetornarTrue()
+        {
+
+            int successStatusCode = _faker.Random.Int(200, 299); 
+
+            Response<string> response = new("", successStatusCode);
+
+            response.IsSuccess.Should().BeTrue();
+        }
+
+        [Fact]
+        public void IsSuccess_DadoValorDiferenteDeSucessoParaStatusCode_EntaoDeveRetornarFalse()
+        {
+
+            int successStatusCode = _faker.Random.Int(300, 599);
+
+            Response<string> response = new("", successStatusCode);
+
+            response.IsSuccess.Should().BeFalse();
         }
     }
 }
