@@ -3,6 +3,7 @@ using eSistem.Dev.Estagio.Core;
 using eSistem.Dev.Estagio.Core.Models.Account;
 using eSistem.Dev.Estagio.Core.Responses;
 using FluentAssertions;
+using Microsoft.AspNetCore.ResponseCompression;
 
 namespace eSistem.Dev.Estagio.CoreTestes.Tests.Responses
 {
@@ -38,6 +39,16 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests.Responses
 
             response.Data.Should().NotBeNull();
             response.Data!.UserName.Should().Be(expectedUsername);
+            response.StatusCode.Should().Be(Configuration.DefaultStatusCode);
+            response.Message.Should().BeNull();
+        }
+
+        [Fact]
+        public void Construtor_DadoInstanciaSemValores_EntaoDeveSetarStatusCodeDefault()
+        {
+            Response<Usuario> response = new();
+
+            response.Data.Should().BeNull();
             response.StatusCode.Should().Be(Configuration.DefaultStatusCode);
             response.Message.Should().BeNull();
         }
