@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using eSistem.Dev.Estagio.Core.Requests.Usuario;
-using eSistem.Dev.Estagio.Api.Endpoints.Identity;
 
 namespace eSistem.Dev.Estagio.Api.Handlers
 {
