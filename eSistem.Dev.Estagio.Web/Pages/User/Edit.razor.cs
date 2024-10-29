@@ -1,7 +1,6 @@
-﻿using eSistem.Dev.Estagio.Api.Endpoints.Identity;
+﻿using eSistem.Dev.Estagio.Core.Requests.Usuario;
 using eSistem.Dev.Estagio.Core;
 using eSistem.Dev.Estagio.Core.Handlers;
-using eSistem.Dev.Estagio.Core.Requests.Usuario;
 using eSistem.Dev.Estagio.Web.Models;
 using eSistem.Dev.Estagio.Web.Security;
 using Microsoft.AspNetCore.Components;
