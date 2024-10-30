@@ -32,7 +32,7 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         [Fact]
         public void CpfCnpjFormatVerify_DadoParametroCorretoComApenasNumeros_EntaoDeveRetornarTrue()
         {
-            string correctlyParameter = _faker.Random.Int().ToString();
+            string correctlyParameter = _faker.Random.Int(0).ToString();
 
             bool isMatch = Configuration.CpfCnpjFormatVerify(correctlyParameter);
 
