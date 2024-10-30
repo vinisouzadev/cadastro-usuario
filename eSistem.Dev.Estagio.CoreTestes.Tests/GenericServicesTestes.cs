@@ -10,13 +10,25 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         private readonly Faker _faker = new("pt_BR");
 
         [Fact]
-        public void IsNullOrEmptyOrContainsSpace_DadoStringPreenchidaSemEspacoComoParametro_EntaoDeveRetornarFalse()
+        public void IsNullOrEmptyOrContainsSpace_DadoUmaStringPreenchidaSemEspacoComoParametro_EntaoDeveRetornarFalse()
         {
-            string correctlStringParameter = _faker.Person.UserName;
+            string correctlyStringParameter = _faker.Person.UserName;
             
-            bool isNullOrConstainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(correctlStringParameter);
+            bool isNullOrConstainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(correctlyStringParameter);
 
             isNullOrConstainsSpace.Should().BeFalse();
         }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public void IsNullOrEmptyOrContainsSpace_DadoUmaStringNulaOuVaziaOuComEspaco_EntaoDeveRetornarTrue(string? stringParameter)
+        { 
+            bool isNullOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringParameter);
+
+            isNullOrContainsSpace.Should().BeTrue();
+        }
+
+
     }
 }

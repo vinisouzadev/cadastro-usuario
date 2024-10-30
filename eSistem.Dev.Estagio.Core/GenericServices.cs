@@ -8,7 +8,7 @@ namespace eSistem.Dev.Estagio.Core
 {
     public static class GenericServices
     {
-        public static bool IsNullOrEmptyOrContainsSpace(string str1)
+        public static bool IsNullOrEmptyOrContainsSpace(string? str1)
         {
             if (string.IsNullOrEmpty(str1))
                 return true;
@@ -18,7 +18,7 @@ namespace eSistem.Dev.Estagio.Core
             return false;
         }
 
-        public static bool IsNullOrEmptyOrContainsSpace(string str1, string str2)
+        public static bool IsNullOrEmptyOrContainsSpace(string? str1, string? str2)
         {
             if (string.IsNullOrEmpty(str1) || string.IsNullOrEmpty(str2))
                 return true;
