@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using eSistem.Dev.Estagio.Core;
 using FluentAssertions;
+using Xunit.Abstractions;
 
 namespace eSistem.Dev.Estagio.CoreTestes.Tests
 {
@@ -8,6 +9,12 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
     public class GenericServicesTestes
     {
         private readonly Faker _faker = new("pt_BR");
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public GenericServicesTestes(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
 
         #region IsNullOrEmptyOrContainsSpace com 1 string como parâmetro
 
@@ -48,8 +55,9 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         [Fact]
         public void IsNullOrEmptyOrContainsSpace_DadoDuasStringsPreenchidasSemEspacoComoParametro_EntaoDeveRetornarFalse()
         {
-            string firstStringParameter = _faker.Person.FirstName;
+            string firstStringParameter = _faker.Person.Gender.ToString();
             string secondStringParameter = _faker.Person.LastName;
+            _testOutputHelper.WriteLine(firstStringParameter);
 
             bool isNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(firstStringParameter, secondStringParameter);
 

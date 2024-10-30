@@ -11,11 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo(".Testes")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo(".Tests")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("eSistem.Dev.Estagio.ApiTestes.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a393452a65372d6c58f795f50dcd4fbf3511594")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6baf9c2fb17a2f4e3397904b7154ea2c03b184ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("eSistem.Dev.Estagio.ApiTestes.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eSistem.Dev.Estagio.ApiTestes.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
