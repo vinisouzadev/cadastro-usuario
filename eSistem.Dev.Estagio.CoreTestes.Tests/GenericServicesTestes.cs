@@ -9,11 +9,13 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
     {
         private readonly Faker _faker = new("pt_BR");
 
+        #region IsNullOrEmptyOrContainsSpace com 1 string como parâmetro
+
         [Fact]
         public void IsNullOrEmptyOrContainsSpace_DadoUmaStringPreenchidaSemEspacoComoParametro_EntaoDeveRetornarFalse()
         {
             string correctlyStringParameter = _faker.Person.UserName;
-            
+
             bool isNullOrConstainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(correctlyStringParameter);
 
             isNullOrConstainsSpace.Should().BeFalse();
@@ -23,7 +25,7 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         [InlineData(null)]
         [InlineData("")]
         public void IsNullOrEmptyOrContainsSpace_DadoUmaStringNulaOuVazia_EntaoDeveRetornarTrue(string? stringParameter)
-        { 
+        {
             bool isNullOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringParameter);
 
             isNullOrContainsSpace.Should().BeTrue();
@@ -38,6 +40,9 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
 
             containsSpace.Should().BeTrue();
         }
+
+        #endregion
+
 
         [Fact]
         public void IsNullOrEmptyOrContainsSpace_DadoDuasStringsPreenchidasSemEspacoComoParametro_EntaoDeveRetornarFalse()
