@@ -50,23 +50,36 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
             isNullOrEmptyOrContainsSpace.Should().BeFalse();
         }
 
-        [Fact]
-        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringNulaESegundaStringPreenchida_EntaoDeveRetornarTrue()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringNulaOuVaziaESegundaStringPreenchida_EntaoDeveRetornarTrue(string? stringNullOrEmpty)
         {
-            string? stringNull = null;
             string stringPreenchida = _faker.Person.FirstName;
 
-            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringNull, stringPreenchida);
+            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringNullOrEmpty, stringPreenchida);
 
             IsNullOrEmptyOrContainsSpace.Should().BeTrue();
         }
 
-        [Fact]
-        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringPreenchidaESegundaStringNula_EntaoDeveRetornarTrue()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringPreenchidaESegundaStringNulaOuVazia_EntaoDeveRetornarTrue(string? stringNullOrEmpty)
         {
             string stringPreenchida = _faker.Person.FirstName;
-            string? stringNull = null;
-            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringPreenchida, stringNull);
+
+            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringPreenchida, stringNullOrEmpty);
+
+            IsNullOrEmptyOrContainsSpace.Should().BeTrue();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public void IsNullOrEmptyOrContainsSpace_DadoDuasStringsVaziasOuNulas_EntaoDeveRetornarTrue(string stringNullOrEmpty)
+        {
+            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringNullOrEmpty);
 
             IsNullOrEmptyOrContainsSpace.Should().BeTrue();
         }
