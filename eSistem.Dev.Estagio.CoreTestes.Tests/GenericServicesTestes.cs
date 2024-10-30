@@ -39,5 +39,16 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
             containsSpace.Should().BeTrue();
         }
 
+        [Fact]
+        public void IsNullOrEmptyOrContainsSpace_DadoDuasStringsPreenchidasSemEspacoComoParametro_EntaoDeveRetornarFalse()
+        {
+            string firstStringParameter = _faker.Person.FirstName;
+            string secondStringParameter = _faker.Person.LastName;
+
+            bool isNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(firstStringParameter, secondStringParameter);
+
+            isNullOrEmptyOrContainsSpace.Should().BeFalse();
+        }
+
     }
 }
