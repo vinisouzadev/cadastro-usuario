@@ -50,5 +50,26 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
             isNullOrEmptyOrContainsSpace.Should().BeFalse();
         }
 
+        [Fact]
+        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringNulaESegundaStringPreenchida_EntaoDeveRetornarTrue()
+        {
+            string? stringNull = null;
+            string stringPreenchida = _faker.Person.FirstName;
+
+            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringNull, stringPreenchida);
+
+            IsNullOrEmptyOrContainsSpace.Should().BeTrue();
+        }
+
+        [Fact]
+        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringPreenchidaESegundaStringNula_EntaoDeveRetornarTrue()
+        {
+            string stringPreenchida = _faker.Person.FirstName;
+            string? stringNull = null;
+            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringPreenchida, stringNull);
+
+            IsNullOrEmptyOrContainsSpace.Should().BeTrue();
+        }
+
     }
 }
