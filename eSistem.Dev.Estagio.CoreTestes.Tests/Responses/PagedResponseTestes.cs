@@ -51,7 +51,7 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests.Responses
             expectedUsuario.UserName = expectedUsername;
             int expectedStatusCode = _faker.Random.Int(100, 599);
             int expectedTotalCount = _faker.Random.Int(0);
-            int expectedCurrentPage = _faker.Random.Int(1);
+            int expectedCurrentPage = _faker.Random.Int(0);
             int expectedPageSize = _faker.Random.Int(1);
             string expectedMessage = _faker.Lorem.Paragraph();
 
