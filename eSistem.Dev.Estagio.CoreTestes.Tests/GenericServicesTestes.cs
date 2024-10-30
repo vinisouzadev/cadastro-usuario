@@ -101,6 +101,28 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
             containsSpace.Should().BeTrue();
         }
 
+        [Fact]
+        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringComEspacoESegundaStringPreenchida_EntaoDeveRetornarTrue()
+        {
+            string stringComEspaco = _faker.Lorem.Paragraph();
+            string stringPreenchida = _faker.Person.FirstName;
+            
+            bool containsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringComEspaco, stringPreenchida);
+
+            containsSpace.Should().BeTrue();
+        }
+
+        [Fact]
+        public void IsNullOrEmptyOrContainsSpace_DadoAmbasStringsContenhamEspaco_EntaoDeveRetornarFalse()
+        {
+            string firstStringComEspaco = _faker.Lorem.Paragraph();
+            string secondStringComEspaco = _faker.Lorem.Paragraph();
+
+            bool containsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(firstStringComEspaco, secondStringComEspaco);
+
+            containsSpace.Should().BeTrue();
+        }
+
         #endregion
 
     }
