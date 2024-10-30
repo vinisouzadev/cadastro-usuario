@@ -52,7 +52,12 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         [Fact]
         public void CpfCnpjFormatVerify_DadoParametroCorretoComNumeroEEspaco_EntaoDeveRetornarFalse()
         {
+            string incorrectlyParameter = _faker.Random.Number(0,10000).ToString();
+            incorrectlyParameter += " " + _faker.Random.Number(0, 10000).ToString();
 
+            bool isMatch = Configuration.CpfCnpjFormatVerify(incorrectlyParameter);
+
+            isMatch.Should().BeFalse();
         }
 
     }
