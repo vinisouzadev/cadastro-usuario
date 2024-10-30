@@ -43,6 +43,7 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
 
         #endregion
 
+        #region IsNullOrEmptyOrContainsSpace com 2 strings como parâmetro
 
         [Fact]
         public void IsNullOrEmptyOrContainsSpace_DadoDuasStringsPreenchidasSemEspacoComoParametro_EntaoDeveRetornarFalse()
@@ -82,12 +83,25 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void IsNullOrEmptyOrContainsSpace_DadoDuasStringsVaziasOuNulas_EntaoDeveRetornarTrue(string stringNullOrEmpty)
+        public void IsNullOrEmptyOrContainsSpace_DadoDuasStringsVaziasOuNulas_EntaoDeveRetornarTrue(string? stringNullOrEmpty)
         {
-            bool IsNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringNullOrEmpty);
+            bool isNullOrEmptyOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringNullOrEmpty);
 
-            IsNullOrEmptyOrContainsSpace.Should().BeTrue();
+            isNullOrEmptyOrContainsSpace.Should().BeTrue();
         }
+
+        [Fact]
+        public void IsNullOrEmptyOrContainsSpace_DadoPrimeiraStringPreenchidaESegundaStringComEspaco_EntaoDeveRetornarTrue()
+        {
+            string stringPreenchida = _faker.Person.FirstName;
+            string stringComEspaco = _faker.Lorem.Paragraph();
+
+            bool containsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringPreenchida, stringComEspaco);
+
+            containsSpace.Should().BeTrue();
+        }
+
+        #endregion
 
     }
 }
