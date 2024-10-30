@@ -22,13 +22,22 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void IsNullOrEmptyOrContainsSpace_DadoUmaStringNulaOuVaziaOuComEspaco_EntaoDeveRetornarTrue(string? stringParameter)
+        public void IsNullOrEmptyOrContainsSpace_DadoUmaStringNulaOuVazia_EntaoDeveRetornarTrue(string? stringParameter)
         { 
             bool isNullOrContainsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringParameter);
 
             isNullOrContainsSpace.Should().BeTrue();
         }
 
+        [Fact]
+        public void IsNullOrEmptyOrContainsSpace_DadoUmaStringComEspaco_EntaoDeveRetornarTrue()
+        {
+            string stringWithSpace = _faker.Lorem.Paragraph();
+
+            bool containsSpace = GenericServices.IsNullOrEmptyOrContainsSpace(stringWithSpace);
+
+            containsSpace.Should().BeTrue();
+        }
 
     }
 }
