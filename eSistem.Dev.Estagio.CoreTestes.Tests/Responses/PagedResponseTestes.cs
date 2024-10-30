@@ -42,5 +42,28 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests.Responses
             pagedResponse.Message.Should().BeNull();
             pagedResponse.PageSize.Should().Be(Configuration.DefaultPageSize);
         }
+
+        [Fact]
+        public void Construtor_DadoTodosOsParametros_EntaoDeveSetarValoresNasPropriedadesCorretamente()
+        {
+            Usuario expectedUsuario = new();
+            string expectedUsername = _faker.Person.FirstName;
+            expectedUsuario.UserName = expectedUsername;
+            int expectedStatusCode = _faker.Random.Int(100, 599);
+            int expectedTotalCount = _faker.Random.Int(0);
+            int expectedCurrentPage = _faker.Random.Int(1);
+            int expectedPageSize = _faker.Random.Int(1);
+            string expectedMessage = _faker.Lorem.Paragraph();
+
+            PagedResponse<Usuario> pagedResponse = new(expectedUsuario, expectedStatusCode, expectedTotalCount, expectedCurrentPage, expectedPageSize, expectedMessage);
+            
+            pagedResponse.Data.Should().NotBeNull();
+            pagedResponse.Data!.UserName.Should().Be(expectedUsername);
+            pagedResponse.StatusCode.Should().Be(expectedStatusCode);
+            pagedResponse.TotalCount.Should().Be(expectedTotalCount);
+            pagedResponse.CurrentPage.Should().Be(expectedCurrentPage);
+            pagedResponse.PageSize.Should().Be(expectedPageSize);
+            pagedResponse.Message.Should().Be(expectedMessage);
+        }
     }
 }
