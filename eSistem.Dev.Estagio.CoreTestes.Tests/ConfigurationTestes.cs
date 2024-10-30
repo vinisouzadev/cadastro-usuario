@@ -30,13 +30,29 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
         }
 
         [Fact]
-        public void CpfCnpjFormatVerify_DadoRegexEParametroCorreto_EntaoDeveCompararFormatacaoCorretamente()
+        public void CpfCnpjFormatVerify_DadoParametroCorretoComApenasNumeros_EntaoDeveRetornarTrue()
         {
-            string correctlyParameterNum = _faker.Random.Int().ToString();
+            string correctlyParameter = _faker.Random.Int().ToString();
 
-            bool isMatch = Configuration.CpfCnpjFormatVerify(correctlyParameterNum);
+            bool isMatch = Configuration.CpfCnpjFormatVerify(correctlyParameter);
 
             isMatch.Should().BeTrue();
+        }
+
+        [Fact]
+        public void CpfCnpjFormatVerify_DadoParametroIncorretoComLetrasENumeros_EntaoDeveRetornarFalse()
+        {
+            string incorrectlyParameter = _faker.Random.AlphaNumeric(11);
+
+            bool isMatch = Configuration.CpfCnpjFormatVerify(incorrectlyParameter);
+
+            isMatch.Should().BeFalse();
+        }
+
+        [Fact]
+        public void CpfCnpjFormatVerify_DadoParametroCorretoComNumeroEEspaco_EntaoDeveRetornarFalse()
+        {
+
         }
 
     }
