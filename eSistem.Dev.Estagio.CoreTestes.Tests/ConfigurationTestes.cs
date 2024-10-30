@@ -1,11 +1,16 @@
-﻿using eSistem.Dev.Estagio.Core;
+﻿using Bogus;
+using eSistem.Dev.Estagio.Core;
 using FluentAssertions;
+using System.Text.RegularExpressions;
 
 namespace eSistem.Dev.Estagio.CoreTestes.Tests
 {
+
     [Trait("Category", "Configuration")]
     public class ConfigurationTestes
     {
+        private readonly Faker _faker = new("pt_BR");
+
         [Fact]
         public void Propriedades_DadoPropriedadesSemAtribuicaoDeValor_EntaoDeveSetarValoresDefaultCorretamente()
         {
@@ -24,6 +29,15 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests
             expectedDefaultCurrentPage.Should().Be(0);
         }
 
+        [Fact]
+        public void CpfCnpjFormatVerify_DadoRegexEParametroCorreto_EntaoDeveCompararFormatacaoCorretamente()
+        {
+            string correctlyParameterNum = _faker.Random.Int().ToString();
+
+            bool isMatch = Configuration.CpfCnpjFormatVerify(correctlyParameterNum);
+
+            isMatch.Should().BeTrue();
+        }
 
     }
 }
