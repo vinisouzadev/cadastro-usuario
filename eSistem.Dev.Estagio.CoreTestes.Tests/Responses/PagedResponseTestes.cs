@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using eSistem.Dev.Estagio.Core;
 using eSistem.Dev.Estagio.Core.Models.Account;
 using eSistem.Dev.Estagio.Core.Responses;
 using FluentAssertions;
@@ -26,6 +27,20 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests.Responses
             pagedResponse.StatusCode.Should().Be(expectedStatusCode);
             pagedResponse.Message.Should().Be(expectedMessage);
             
+        }
+
+        [Fact]
+        public void Construtor_DadoQualquerParametro_EntaoDeveSetarPropriedadesDefaultCorretamente()
+        {
+            Usuario qualquerUsuario = new();
+            int qualquerStatusCode = _faker.Random.Int(100, 599);
+            int qualquerTotalCount = _faker.Random.Int(0);
+
+            PagedResponse<Usuario> pagedResponse = new(qualquerUsuario, qualquerStatusCode, qualquerTotalCount);
+
+            pagedResponse.CurrentPage = Configuration.DefaultCurrentPage;
+            pagedResponse.Message.Should().BeNull();
+            pagedResponse.PageSize.Should().Be(Configuration.DefaultPageSize);
         }
     }
 }
