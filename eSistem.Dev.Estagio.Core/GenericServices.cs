@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace eSistem.Dev.Estagio.Core
+﻿namespace eSistem.Dev.Estagio.Core
 {
     public static class GenericServices
     {
@@ -27,5 +21,6 @@ namespace eSistem.Dev.Estagio.Core
 
             return false;
         }
+
     }
 }

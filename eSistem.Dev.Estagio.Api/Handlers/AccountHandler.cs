@@ -34,6 +34,8 @@ namespace eSistem.Dev.Estagio.Api.Handlers
 
             var user = await _userManager.FindByNameAsync(request.Id);
 
+
+
             if (user is null)
                 return new Response<string?>(string.Empty, 404, "Usuário não encontrado");
 
