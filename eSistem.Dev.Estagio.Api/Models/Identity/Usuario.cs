@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using eSistem.Dev.Estagio.Core.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace eSistem.Dev.Estagio.Api.Models.Identity
 {
     public class Usuario : IdentityUser
     {
-        public int IdPessoa { get; set; }
+        public int IdPerson { get; set; }
 
         public bool Ativo { get; set; } = true;
 
-        public PessoaWithUser Pessoa { get; set; } = null!;
+        public PersonWithUser Person { get; set; } = null!;
+
     }
 }

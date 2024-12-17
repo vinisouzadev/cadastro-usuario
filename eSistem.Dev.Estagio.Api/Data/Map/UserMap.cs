@@ -10,13 +10,13 @@ namespace eSistem.Dev.Estagio.Api.Data.Map
         {
             builder.ToTable("AspNetUsers");
 
-            builder.Property(x => x.IdPessoa)
+            builder.Property(x => x.IdPerson)
                 .IsRequired();
-            builder.HasIndex(x => x.IdPessoa).HasDatabaseName("ix_usuario_id_pessoa");
+            builder.HasIndex(x => x.IdPerson).HasDatabaseName("ix_usuario_id_pessoa");
 
-            builder.HasOne(x => x.Pessoa)
-                .WithOne(x => x.User)
-                .HasForeignKey<Usuario>(x => x.IdPessoa)
+            builder.HasOne(x => x.Person)
+                .WithOne(x => x.Usuario)
+                .HasForeignKey<Usuario>(x => x.IdPerson)
                 .OnDelete(DeleteBehavior.Cascade);
                 
         }

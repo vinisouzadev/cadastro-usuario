@@ -7,12 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder
-    .Configurations()
-    .AddCors()
-    .AddEntityFramework()
-    .Security()
-    .AddDependencyInjection();
+builder.AddApiConfigurations();
     
 
 var app = builder.Build();

@@ -1,35 +1,40 @@
 ﻿using eSistem.Dev.Estagio.Api.Data;
-using eSistem.Dev.Estagio.Api.Interfaces;
+using eSistem.Dev.Estagio.Api.Interfaces.Data.Repository;
 using eSistem.Dev.Estagio.Api.Models;
-using eSistem.Dev.Estagio.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eSistem.Dev.Estagio.Api.Repository
 {
-    public class PessoaRepository(AppDbContext context) : IPessoaRepository
+    public class PessoaRepository(ApplicationDbContext context) : IPersonRepository
     {
-        private readonly AppDbContext _context = context;
+        private readonly ApplicationDbContext _context = context;
 
-        public void Delete(PessoaWithUser pessoa)
+        public async Task<bool> DeleteAsync(PersonWithUser pessoa)
         {
             _context.Attach(pessoa);
-            _context.Pessoas.Remove(pessoa);
-            _context.SaveChanges();
+            _context.People.Remove(pessoa);
+            return await _context.SaveChangesAsync() > 0;
         }
 
-        public PessoaWithUser? GetByCpfCnpj(string cpfCnpj)
-        {
-            PessoaWithUser? pessoa = _context.Pessoas.FirstOrDefault(x => x.CpfCnpj == cpfCnpj) ?? null;
+        public async Task<PersonWithUser?> GetByCpfCnpjAsync(string cpfCnpj)
+            => await _context.People.FirstOrDefaultAsync(x => x.CpfCnpj == cpfCnpj);
 
-            return pessoa;
+        public async Task<PersonWithUser> CreateAsync(PersonWithUser pessoa)
+        {   
+            var newPerson = new PersonWithUser()
+            {
+                Ativo = pessoa.Ativo,
+                Cadastro = pessoa.Cadastro,
+                CpfCnpj = pessoa.CpfCnpj,
+                Id = pessoa.Id,
+                NomeRazaoSocial = pessoa.NomeRazaoSocial,
+                Tipo = pessoa.Tipo,
+                Usuario = pessoa.Usuario
+            };
+
+            await _context.People.AddAsync(newPerson);
+            await _context.SaveChangesAsync();
+            return newPerson;
         }
-
-        public PessoaWithUser Insert(PessoaWithUser pessoa)
-        {
-            _context.Pessoas.Add(pessoa);
-            _context.SaveChanges();
-            return pessoa;
-        }
-
-
     }
 }

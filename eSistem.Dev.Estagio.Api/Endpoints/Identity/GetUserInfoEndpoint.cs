@@ -1,5 +1,6 @@
 ﻿using eSistem.Dev.Estagio.Api.Interfaces;
 using eSistem.Dev.Estagio.Core.Handlers;
+using eSistem.Dev.Estagio.Core.Requests.Usuario;
 using System.Security.Claims;
 
 namespace eSistem.Dev.Estagio.Api.Endpoints.Identity

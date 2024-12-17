@@ -11,7 +11,7 @@ namespace eSistem.Dev.Estagio.Core.Responses
             int totalCount,
             int currentPage = Configuration.DefaultCurrentPage,
             int pageSize = Configuration.DefaultPageSize,
-            string message = null) : base(data, statusCode, message)
+            string? message = null) : base(data, statusCode, message)
         {
             Data = data;
             TotalCount = totalCount;

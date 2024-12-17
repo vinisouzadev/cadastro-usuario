@@ -1,5 +1,4 @@
-﻿using eSistem.Dev.Estagio.Api.Endpoints.Identity;
-using eSistem.Dev.Estagio.Core.Handlers;
+﻿using eSistem.Dev.Estagio.Core.Handlers;
 using eSistem.Dev.Estagio.Core.Models.Account;
 using eSistem.Dev.Estagio.Core.Requests.Account;
 using eSistem.Dev.Estagio.Core.Requests.Usuario;

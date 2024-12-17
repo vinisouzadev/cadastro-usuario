@@ -8,3 +8,5 @@ eSistem.Dev.Estagio.Api/obj/
 eSistem.Dev.Estagio.Api/Migrations/
 eSistem.Dev.Estagio.Api/appsettings.Development.json
 eSistem.Dev.Estagio.Api/eSistem.Dev.Estagio.Api.csproj.user
+eSistem.Dev.Estagio.CoreTestes.Tests/bin/
+eSistem.Dev.Estagio.CoreTestes.Tests/obj/

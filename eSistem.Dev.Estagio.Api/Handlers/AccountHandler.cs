@@ -1,5 +1,4 @@
-﻿using eSistem.Dev.Estagio.Api.Interfaces;
-using eSistem.Dev.Estagio.Api.Models;
+﻿using eSistem.Dev.Estagio.Api.Models;
 using eSistem.Dev.Estagio.Core;
 using eSistem.Dev.Estagio.Core.Enums;
 using eSistem.Dev.Estagio.Core.Handlers;
@@ -9,17 +8,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using eSistem.Dev.Estagio.Core.Requests.Usuario;
-using eSistem.Dev.Estagio.Api.Endpoints.Identity;
+using eSistem.Dev.Estagio.Api.Interfaces.Data.Services;
 
 namespace eSistem.Dev.Estagio.Api.Handlers
 {
     public class AccountHandler
-        (IPessoaService pessoaServices,
+        (IPersonServices pessoaServices,
         SignInManager<Models.Identity.Usuario> signInManager,
         UserManager<Models.Identity.Usuario> userManager,
         IAccountServices accountService) : IAccountHandler
     {
-        private readonly IPessoaService _pessoaServices = pessoaServices;
+        private readonly IPersonServices _personService = pessoaServices;
 
         private readonly SignInManager<Models.Identity.Usuario> _signInManager = signInManager;
 
@@ -97,7 +96,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
             Core.Models.Account.Usuario? usuario = null;
             try
             {
-                var user = _accountService.GetByUserName(request.Id);
+                var user = await _accountService.GetByUserNameAsync(request.Id);
 
                 if (user is null)
                     return new Response<Core.Models.Account.Usuario?>(null, 404, "Não foi encontrado este usuário");
@@ -114,9 +113,9 @@ namespace eSistem.Dev.Estagio.Api.Handlers
                     user.UserName = request.UserName;
                 }
 
-                if (!emptyNomeRazaoSocial && request.NomeRazaoSocial != user.Pessoa.NomeRazaoSocial)
+                if (!emptyNomeRazaoSocial && request.NomeRazaoSocial != user.Person.NomeRazaoSocial)
                 {
-                    user.Pessoa.NomeRazaoSocial = request.NomeRazaoSocial;
+                    user.Person.NomeRazaoSocial = request.NomeRazaoSocial;
 
                     var result = await _userManager.UpdateAsync(user);
 
@@ -134,7 +133,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
                 usuario = new()
                 {
                     UserName = user.UserName,
-                    Pessoa = user.Pessoa,
+                    Person = user.Person,
                     Claims = roles
                 };
 
@@ -151,7 +150,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
             try
             {
                 List<Core.Models.Account.Usuario?> usuarios = [];
-                var users = await _userManager.Users.Include(x => x.Pessoa).ToListAsync();
+                var users = await _userManager.Users.Include(x => x.Person).ToListAsync();
 
 
 
@@ -164,7 +163,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
                     usuarios.Add(new Core.Models.Account.Usuario
                     {
                         UserName = user.UserName,
-                        Pessoa = user.Pessoa,
+                        Person = user.Person,
                         Claims = userRoles
                     });
 
@@ -198,7 +197,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
             if (string.IsNullOrEmpty(userName))
                 return Task.FromResult(new Response<Core.Models.Account.Usuario?>(null, 404, "Não foi possível encontrar este usuário"));
 
-            var usuario = _accountService.GetByUserName(userName);
+            var usuario = _accountService.GetByUserNameAsync(userName);
 
             if (usuario is null)
                 return Task.FromResult(new Response<Core.Models.Account.Usuario?>(null, 404, "Não foi possível encontrar este usuário"));
@@ -206,7 +205,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
             Core.Models.Account.Usuario? usuarioEncontrado = new()
             {
                 UserName = usuario.UserName!,
-                Pessoa = usuario.Pessoa
+                Person = usuario.Pessoa
             };
 
             if (request.Claims.Any())
@@ -270,16 +269,14 @@ namespace eSistem.Dev.Estagio.Api.Handlers
         /// <returns></returns>
         public async Task<Response<string?>> RegisterAsync(RegisterRequest request)
         {
-            //Validar o request.
 
-
-            PessoaWithUser? pessoa = _pessoaServices.GetByCpfCnpj(request.CpfCnpj);
+            PessoaWithUser? person = _personService.GetByCpfCnpj(request.CpfCnpj);
 
             Models.Identity.Usuario user = new();
 
-            if (pessoa is not null)
+            if (person is not null)
             {
-                if (_accountService.GetByIdPessoa(pessoa.Id) is not null)
+                if (_accountService.GetByIdPessoa(person.Id) is not null)
                     return new Response<string?>(string.Empty, 400, "Já existe um usuário vinculado a esta pessoa");
             }
             switch (request.Tipo)
@@ -304,9 +301,9 @@ namespace eSistem.Dev.Estagio.Api.Handlers
                     return new Response<string?>(string.Empty, 400, "O tipo deve ser apenas físico ou jurídico.");
             }
 
-            if (pessoa is null)
+            if (person is null)
             {
-                pessoa = new PessoaWithUser
+                person = new PessoaWithUser
                 {
                     NomeRazaoSocial = request.NomeRazaoSocial,
                     CpfCnpj = request.CpfCnpj,
@@ -321,14 +318,14 @@ namespace eSistem.Dev.Estagio.Api.Handlers
             else if (GenericServices.IsNullOrEmptyOrContainsSpace(request.Password))
                 return new Response<string?>(string.Empty, 400, "Não são permitidos espaços na senha");
 
-            bool userNameExists = _accountService.GetByUserName(request.UserName) is null;
+            bool userNameExists = _accountService.GetByUserNameAsync(request.UserName) is null;
 
             if (!userNameExists)
                 return new Response<string?>(string.Empty, 400, "Este username já existe.");
 
-            user.Pessoa = pessoa;
-            user.Pessoa.User = user;
-            user.IdPessoa = pessoa.Id;
+            user.Person = person;
+            user.Person.User = user;
+            user.IdPerson = person.Id;
             user.UserName = request.UserName;
 
             var result = await _accountService.Create(user, request.Password);
@@ -338,7 +335,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
 
             if (await _userManager.Users.CountAsync() == 1)
             {
-                if (!await AddRoles(user.UserName))
+                if (!await AddRolesAsync(user.UserName))
                 {
                     _accountService.Delete(user);
                     return new Response<string?>(string.Empty, 500, "Falha ao criar a conta");
@@ -351,12 +348,12 @@ namespace eSistem.Dev.Estagio.Api.Handlers
         }
 
         /// <summary>
-        /// Busca por usuário e se não econtrar retorna false. Caso encontre, gera uma role de "Admin"
+        /// Busca por usuário e se não encontrar retorna false. Caso encontre, gera uma role de "Admin"
         /// para o usuário
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        private async Task<bool> AddRoles(string userName)
+        private async Task<bool> AddRolesAsync(string userName)
         {
             var user = await _userManager.FindByNameAsync(userName);
 

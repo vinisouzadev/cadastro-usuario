@@ -1,5 +1,4 @@
-﻿using eSistem.Dev.Estagio.Core.Requests;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 
 namespace eSistem.Dev.Estagio.Core.Requests.Usuario
 {
