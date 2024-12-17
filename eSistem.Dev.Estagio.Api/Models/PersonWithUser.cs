@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace eSistem.Dev.Estagio.Api.Models
 {
-    public class PessoaWithUser : Pessoa
+    public class PersonWithUser : Person
     {
         [JsonIgnore]
-        public Usuario? User { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }

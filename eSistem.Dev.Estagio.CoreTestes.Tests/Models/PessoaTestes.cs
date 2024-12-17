@@ -12,7 +12,7 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests.Models
         {
             DateTime dateBeforeInstance = DateTime.UtcNow;
 
-            Pessoa pessoa = new();
+            Person pessoa = new();
 
             DateTime dateAfterInstance = DateTime.UtcNow;
 

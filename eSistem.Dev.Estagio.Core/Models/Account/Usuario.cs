@@ -6,6 +6,6 @@
 
         public Dictionary<string, string> Claims { get; set; } = [];
 
-        public Pessoa Pessoa { get; set; } = new();
+        public Person Person { get; set; } = new();
     }
 }

@@ -15,7 +15,7 @@ namespace eSistem.Dev.Estagio.CoreTestes.Tests.Models
 
             usuario.UserName.Should().BeEmpty();
             usuario.Claims.Should().BeEmpty();
-            usuario.Pessoa.Should().NotBeNull();
+            usuario.Person.Should().NotBeNull();
         }
     }
 }

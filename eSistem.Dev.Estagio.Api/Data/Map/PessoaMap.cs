@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace eSistem.Dev.Estagio.Api.Data.Map
 {
-    public class PessoaMap : IEntityTypeConfiguration<PessoaWithUser>
+    public class PessoaMap : IEntityTypeConfiguration<PersonWithUser>
     {
-        public void Configure(EntityTypeBuilder<PessoaWithUser> builder)
+        public void Configure(EntityTypeBuilder<PersonWithUser> builder)
         {
             builder.ToTable("pessoa");
 
@@ -38,9 +38,9 @@ namespace eSistem.Dev.Estagio.Api.Data.Map
                 .HasColumnName("ativo")
                 .IsRequired();
 
-            builder.HasOne(x => x.User)
-                .WithOne(x => x.Pessoa)
-                .HasForeignKey<Usuario>(x => x.IdPessoa)
+            builder.HasOne(x => x.Usuario)
+                .WithOne(x => x.Person)
+                .HasForeignKey<Usuario>(x => x.IdPerson)
                 .OnDelete(DeleteBehavior.Cascade);
 
         }

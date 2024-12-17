@@ -1,8 +1,9 @@
 ﻿using eSistem.Dev.Estagio.Core.Enums;
+using eSistem.Dev.Estagio.Core.Models.Account;
 
 namespace eSistem.Dev.Estagio.Core.Models
 {
-    public class Pessoa
+    public class Person
     {
         public int Id { get; set; }
 

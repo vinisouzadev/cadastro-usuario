@@ -1,17 +1,17 @@
-﻿using eSistem.Dev.Estagio.Api.Data.Map;
-using eSistem.Dev.Estagio.Api.Models;
+﻿using eSistem.Dev.Estagio.Api.Models;
 using eSistem.Dev.Estagio.Api.Models.Identity;
+using eSistem.Dev.Estagio.Core.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace eSistem.Dev.Estagio.Api.Data
 {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext(options)
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext(options)
     {
-        public DbSet<PessoaWithUser> Pessoas { get; set; }
+        public DbSet<PersonWithUser> People { get; set; }
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {   

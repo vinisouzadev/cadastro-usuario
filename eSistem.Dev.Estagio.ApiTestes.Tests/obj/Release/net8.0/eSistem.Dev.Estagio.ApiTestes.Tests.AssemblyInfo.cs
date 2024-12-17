@@ -13,7 +13,7 @@ using System.Reflection;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo(".Tests")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("eSistem.Dev.Estagio.ApiTestes.Tests")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb8ad24bd1fa9a12cbf97fd8eb64c483c5387150")]
 [assembly: System.Reflection.AssemblyProductAttribute("eSistem.Dev.Estagio.ApiTestes.Tests")]
