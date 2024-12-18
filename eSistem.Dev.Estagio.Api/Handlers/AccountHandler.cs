@@ -328,7 +328,7 @@ namespace eSistem.Dev.Estagio.Api.Handlers
             user.IdPerson = person.Id;
             user.UserName = request.UserName;
 
-            var result = await _accountService.Create(user, request.Password);
+            var result = await _accountService.CreateAsync(user, request.Password);
 
             if (!result)
                 return new Response<string?>("Falha ao criar a conta", 400, "Falha ao criar a conta");

@@ -5,10 +5,10 @@ namespace eSistem.Dev.Estagio.Api.Interfaces.Data.Services
 {
     public interface IPersonServices
     {
-        Task<Person> GetByCpfCnpj(string CpfCpnj);
+        Task<PersonWithUser?> GetByCpfCnpj(string CpfCpnj);
 
-        Task<Person> CreateAsync(Person pessoa);
+        Task<PersonWithUser?> CreateAsync(PersonWithUser pessoa);
 
-        Task<bool> Delete(Person pessoa);
+        Task<bool> Delete(PersonWithUser pessoa);
     }
 }

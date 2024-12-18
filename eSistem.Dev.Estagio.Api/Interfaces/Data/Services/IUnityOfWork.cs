@@ -6,7 +6,7 @@ namespace eSistem.Dev.Estagio.Api.Interfaces.Data.Services
     {
         Task<IDbContextTransaction> BeginTransactionAsync();
 
-        Task<bool> CommitAsync();
+        Task CommitAsync();
 
         Task RollbackAsync();
     }

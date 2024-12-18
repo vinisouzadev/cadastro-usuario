@@ -1,18 +1,19 @@
 ﻿using eSistem.Dev.Estagio.Api.Models.Identity;
+using eSistem.Dev.Estagio.Api.Services.ServiceResult;
 
 namespace eSistem.Dev.Estagio.Api.Interfaces.Data.Services
 {
     public interface IAccountServices
     {
-        Task<Usuario?> GetByIdPessoa(int idPessoa);
+        Task<ServiceResult<Usuario?>> GetByIdPessoa(int idPessoa);
 
-        Task<Usuario?> GetByUserNameAsync(string userName);
+        Task<ServiceResult<Usuario?>> GetByUserNameAsync(string userName);
 
-        Task<bool> Delete(Usuario usuario);
+        Task<ServiceResult<string?>> Delete(Usuario usuario);
 
-        Task<bool> ValidatePasswordAsync(string password, Usuario user);
+        Task<ServiceResult<string>> ValidatePasswordAsync(string password, Usuario user);
 
-        Task<bool> Create(Usuario usuario, string password);
+        Task<ServiceResult<Usuario?>> CreateAsync(Usuario usuario, string password);
 
     }
 }

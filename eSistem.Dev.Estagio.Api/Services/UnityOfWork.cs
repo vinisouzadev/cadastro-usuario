@@ -23,7 +23,7 @@ namespace eSistem.Dev.Estagio.Api.Services
         public async Task CommitAsync()
         {
             if (IsTransactionNull())
-                throw new InvalidOperationException("");
+                throw new InvalidOperationException("Não existe uma transação ativa");
              await GerarCommitAsync();
         }
 
